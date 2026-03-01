@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment files (never commit real credentials)
+# Commit envs/*.env.* as templates only – replace secrets via CI/CD
+.env
+*.env.local
+envs/.env.*.local
+
+# Test artefacts
+.coverage
+htmlcov/
+.pytest_cache/
+*.xml
+
+# Mypy
+.mypy_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Server PID
+.server.pid
+
+# Alembic – commit generated migrations, ignore local overrides
+# alembic/versions/  ← do NOT exclude; migrations must be version-controlled
