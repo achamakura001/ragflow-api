@@ -1,3 +1,1 @@
-from app.repositories.item_repository import ItemRepository
-
-__all__ = ["ItemRepository"]
+__all__: list[str] = []

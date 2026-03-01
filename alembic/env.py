@@ -19,7 +19,7 @@ from app.config import get_settings
 # Import ALL models so that Base.metadata contains every table.
 # Add new model imports here as you create them.
 from app.database import Base
-from app.models import Item, Tenant, TenantMember, TenantMemberRole, TenantPlan, User  # noqa: F401
+from app.models import Tenant, TenantMember, TenantMemberRole, TenantPlan, User  # noqa: F401
 
 # ── Alembic config ────────────────────────────────────────────────────────────
 config = context.config
