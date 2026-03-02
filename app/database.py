@@ -6,6 +6,7 @@ Switch the driver in Settings.database_url without touching application code.
 
 from collections.abc import AsyncGenerator
 
+import sqlalchemy as sa
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
     async_sessionmaker,
@@ -54,9 +55,9 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 
 async def init_db() -> None:
-    """Create all tables (development convenience – use Alembic in production)."""
+    """Verify DB connectivity on startup. Schema is managed by Alembic migrations."""
     async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+        await conn.execute(sa.text("SELECT 1"))
 
 
 async def dispose_db() -> None:
