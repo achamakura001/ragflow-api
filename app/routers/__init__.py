@@ -1,3 +1,3 @@
-from app.routers import auth, health, tenant, vectordb
+from app.routers import auth, embedding, health, tenant, vectordb
 
-__all__ = ["auth", "health", "tenant", "vectordb"]
+__all__ = ["auth", "embedding", "health", "tenant", "vectordb"]

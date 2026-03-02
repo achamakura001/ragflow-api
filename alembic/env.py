@@ -20,6 +20,7 @@ from app.config import get_settings
 # Add new model imports here as you create them.
 from app.database import Base
 from app.models import (  # noqa: F401
+    EmbeddingProvider, TenantEmbeddingConfig,
     Tenant, TenantMember, TenantMemberRole, TenantPlan, User,
     VectorDbConnection, VectorDbEnv, VectorDbType,
 )

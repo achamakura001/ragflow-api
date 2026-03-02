@@ -13,7 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import get_settings
 from app.database import dispose_db, init_db
 from app.middleware.logging import RequestLoggingMiddleware
-from app.routers import auth, health, tenant, vectordb
+from app.routers import auth, health, tenant, vectordb, embedding
 
 settings = get_settings()
 logger = logging.getLogger(__name__)
@@ -52,6 +52,7 @@ def create_app() -> FastAPI:
     app.include_router(auth.router, prefix="/api/v1/auth", tags=["Auth"])
     app.include_router(tenant.router, prefix="/api/v1/tenants", tags=["Tenants"])
     app.include_router(vectordb.router, prefix="/api/v1/vector-dbs", tags=["Vector DBs"])
+    app.include_router(embedding.router, prefix="/api/v1/embeddings", tags=["Embeddings"])
 
     return app
 

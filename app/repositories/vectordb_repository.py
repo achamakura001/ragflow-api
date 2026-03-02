@@ -107,7 +107,14 @@ class VectorDbRepository:
         if properties is not None:
             conn.properties = properties
         await self._session.flush()
-        return conn
+        # Re-fetch so server-updated columns (updated_at) are populated
+        # without triggering implicit lazy I/O (MissingGreenlet).
+        result = await self._session.execute(
+            select(VectorDbConnection)
+            .where(VectorDbConnection.id == conn.id)
+            .options(selectinload(VectorDbConnection.provider))
+        )
+        return result.scalar_one()
 
     async def delete_connection(self, conn: VectorDbConnection) -> None:
         await self._session.delete(conn)
